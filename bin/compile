@@ -49,7 +49,9 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       echo "=====> SURVIVED 2"
       curl -s "$url" | tar xvz -C "$dir" >/dev/null 2>&1
     else
+      echo "=====> SURVIVED 3"
       git clone $url $dir >/dev/null 2>&1
+      echo "=====> SURVIVED 4"
       if [ -f "$dir/.gitmodules" ]; then
         echo "=====> Detected git submodules. Initializing..."
         (cd $dir && git submodule update --init --recursive)
@@ -60,11 +62,17 @@ for BUILDPACK in $(cat $1/.buildpacks); do
     if [ "$branch" != "" ]; then
       git checkout $branch >/dev/null 2>&1
     fi
+    
+    echo "=====> SURVIVED 5"
 
     # we'll get errors later if these are needed and don't exist
     chmod -f +x $dir/bin/{detect,compile,release} || true
 
+    echo "=====> SURVIVED 6"
+    
     framework=$($dir/bin/detect $1)
+    
+    echo "=====> SURVIVED 7"
 
     if [ $? == 0 ]; then
       echo "=====> Detected Framework: $framework"
