@@ -44,7 +44,9 @@ for BUILDPACK in $(cat $1/.buildpacks); do
     echo "=====> $dir"
     
     if [[ "$url" =~ \.tgz$ ]]; then
+      echo "=====> SURVIVED 1"
       mkdir -p "$dir"
+      echo "=====> SURVIVED 2"
       curl -s "$url" | tar xvz -C "$dir" >/dev/null 2>&1
     else
       git clone $url $dir >/dev/null 2>&1
