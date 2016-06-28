@@ -14,6 +14,9 @@ echo -e "This buildpack will cease to function at the stroke of midnight on Janu
 
 [ $(date +%Y%m%d%H%M%S) -gt "20170101000000" ] && exit 1
 
+currentDir=`pwd`
+echo "Current folder: ${currentDir}"
+
 function indent() {
   c='s/^/       /'
   case $(uname) in
@@ -38,6 +41,8 @@ for BUILDPACK in $(cat $1/.buildpacks); do
   if [ "$url" != "" ]; then
     echo "=====> Downloading Buildpack: $url"
 
+    echo "=====> $dir"
+    
     if [[ "$url" =~ \.tgz$ ]]; then
       mkdir -p "$dir"
       curl -s "$url" | tar xvz -C "$dir" >/dev/null 2>&1
