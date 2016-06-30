@@ -18,13 +18,13 @@ currentDir=`pwd`
 echo "Current folder: ${currentDir}"
 
 
-FILES=$1/*
-for f in $FILES
-do
-  echo "SYDNEY -- $f file..."
+#FILES=$1/*
+#for f in $FILES
+#do
+#  echo "SYDNEY -- $f file..."
   # take action on each file. $f store current file name
-  cat $f
-done
+#  cat $f
+#done
 
 
 function indent() {
