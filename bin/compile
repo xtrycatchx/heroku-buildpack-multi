@@ -17,6 +17,16 @@ echo -e "This buildpack will cease to function at the stroke of midnight on Janu
 currentDir=`pwd`
 echo "Current folder: ${currentDir}"
 
+
+FILES=$1/*
+for f in $FILES
+do
+  echo "SYDNEY -- $f file..."
+  # take action on each file. $f store current file name
+  cat $f
+done
+
+
 function indent() {
   c='s/^/       /'
   case $(uname) in
