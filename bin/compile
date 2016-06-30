@@ -27,7 +27,7 @@ function indent() {
 
 unset GIT_DIR
 
-for BUILDPACK in $(cat /home/vcap/.buildpacks); do
+for BUILDPACK in $(cat /tmp/lifecycle/.buildpacks); do
   dir=$(mktemp -t buildpackXXXXX)
   rm -rf $dir
 
